@@ -1,0 +1,124 @@
+// variables primary
+$white: hsl(0, 0%, 100%);
+$black: hsl(0, 0%, 0%);
+$dark-gray: hsl(0, 0%, 55%);
+$very-dark-gray: hsl(0, 0%, 41%);
+
+// site
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	list-style: none;
+}
+
+body {
+	// font-family: 'Alata', sans-serif;
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 62.5%;
+	min-height: 100vh;
+	min-width: 375px;
+}
+
+.wrapper {
+	max-width: 1440px;
+	// margin: 0 auto;
+}
+
+header {
+	height: 655px;
+	background: url('../images/mobile/image-hero.jpg') center no-repeat;
+	background-size: cover;
+	color: $white;
+}
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 4em 2.5em;
+
+	&__logo {
+		width: 150px;
+		height: 25px;
+	}
+
+	&__desktop {
+		display: none;
+	}
+
+	&__mobile {
+		.menu {
+			&__btn {
+				position: relative;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 25px;
+				height: 25px;
+				border: none;
+				background-color: transparent;
+				cursor: pointer;
+
+				&--line {
+					display: block;
+					position: absolute;
+					width: 25px;
+					height: 2px;
+					background-color: white;
+					transition: opacity 700ms cubic-bezier(0.9, 0, 0.33, 1), transform 700ms cubic-bezier(0.9, 0, 0.33, 1);
+				}
+
+				&--line:nth-child(1).active {
+					opacity: 0;
+				}
+
+				&--line:nth-child(2) {
+					top: 5px;
+				}
+
+				&--line:nth-child(2).active {
+					transform: rotate(45deg) translate(4.5px, 5.5px);
+				}
+
+				&--line:nth-child(3) {
+					bottom: 4px;
+				}
+
+				&--line:nth-child(3).active {
+					transform: rotate(-45deg) translate(4.5px, -5.5px);
+				}
+			}
+
+			&__link {
+				color: $white;
+				display: none;
+			}
+		}
+	}
+
+	&__hero {
+		position: relative;
+		// top: 50%;
+		transform: translateY(45%);
+
+		border: 1px solid $white;
+		margin: 2.5em;
+		padding: 2.75em 3em;
+
+		// margin: 0 auto;
+
+		&--text {
+			text-transform: uppercase;
+			font-size: 2.5rem;
+		}
+	}
+}
+
+.link {
+	color: $white;
+}
+
+@media (min-width: 576px) {
+}
