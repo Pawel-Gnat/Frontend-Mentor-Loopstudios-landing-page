@@ -14,11 +14,14 @@ $very-dark-gray: hsl(0, 0%, 41%);
 }
 
 body {
-	// font-family: 'Alata', sans-serif;
 	font-family: 'Josefin Sans', sans-serif;
 	font-size: 62.5%;
 	min-height: 100vh;
 	min-width: 375px;
+}
+
+.overflow {
+	overflow-y: hidden;
 }
 
 .wrapper {
@@ -42,6 +45,7 @@ header {
 	&__logo {
 		width: 150px;
 		height: 25px;
+		z-index: 2;
 	}
 
 	&__desktop {
@@ -60,6 +64,7 @@ header {
 				border: none;
 				background-color: transparent;
 				cursor: pointer;
+				z-index: 2;
 
 				&--line {
 					display: block;
@@ -67,7 +72,7 @@ header {
 					width: 25px;
 					height: 2px;
 					background-color: white;
-					transition: opacity 700ms cubic-bezier(0.9, 0, 0.33, 1), transform 700ms cubic-bezier(0.9, 0, 0.33, 1);
+					transition: opacity 0.5s cubic-bezier(0.9, 0, 0.33, 1), transform 0.5s cubic-bezier(0.9, 0, 0.33, 1);
 				}
 
 				&--line:nth-child(1).active {
@@ -91,9 +96,41 @@ header {
 				}
 			}
 
-			&__link {
-				color: $white;
-				display: none;
+			&__box {
+				position: fixed;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 0;
+				background-color: $black;
+				z-index: 1;
+				transition: width 0.5s;
+
+				&--links {
+					position: relative;
+					top: 50%;
+					transform: translateY(-50%);
+					margin: 2.5em;
+
+					a {
+						display: inline-block;
+						position: relative;
+						left: -300px;
+						text-transform: uppercase;
+						font-size: 2rem;
+						padding: 1rem 0;
+						color: $white;
+						transition: left 0.8s;
+					}
+				}
+			}
+
+			&__box.display {
+				width: 100%;
+
+				a {
+					left: 0px;
+				}
 			}
 		}
 	}
@@ -118,6 +155,134 @@ header {
 
 .link {
 	color: $white;
+}
+
+.heading {
+	text-transform: uppercase;
+	font-size: 2rem;
+}
+
+.company {
+	&__image {
+		min-width: 330px;
+		min-height: 225px;
+		margin: 9.5em 2.5em 0;
+		background: url('../images/mobile/image-interactive.jpg') center no-repeat;
+		background-size: cover;
+	}
+
+	&__text {
+		padding: 0 4em;
+		margin: 5em 0 10em;
+		text-align: center;
+
+		&--info {
+			font-family: 'Alata', sans-serif;
+			font-size: 1rem;
+			line-height: 1.5em;
+			margin-top: 1em;
+			color: $dark-gray;
+		}
+	}
+}
+
+.creations {
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: repeat(10, auto);
+	grid-column-gap: 0px;
+	grid-row-gap: 25px;
+	text-align: center;
+	margin: 0 2.5em;
+
+	&__heading {
+		grid-area: 1 / 1 / 2 / 2;
+		margin-bottom: 1.5rem;
+	}
+
+	&__product {
+		position: relative;
+		height: 120px;
+		width: auto;
+		background-position: center;
+		background-size: cover;
+
+		&--text {
+			position: relative;
+			top: 30%;
+			text-transform: uppercase;
+			font-size: 1.8rem;
+			margin-left: 1em;
+			color: $white;
+			text-align: left;
+			z-index: 1;
+		}
+	}
+
+	&__product:after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background: rgba(0, 0, 0, 0.3);
+	}
+
+	&__product:nth-of-type(1) {
+		grid-area: 2 / 1 / 3 / 2;
+		background-image: url('../images/mobile/image-deep-earth.jpg');
+	}
+
+	&__product:nth-of-type(2) {
+		grid-area: 3 / 1 / 4 / 2;
+		background-image: url('../images/mobile/image-night-arcade.jpg');
+	}
+
+	&__product:nth-of-type(3) {
+		grid-area: 4 / 1 / 5 / 2;
+		background-image: url('../images/mobile/image-soccer-team.jpg');
+	}
+
+	&__product:nth-of-type(4) {
+		grid-area: 5 / 1 / 6 / 2;
+		background-image: url('../images/mobile/image-grid.jpg');
+	}
+
+	&__product:nth-of-type(5) {
+		grid-area: 6 / 1 / 7 / 2;
+		background-image: url('../images/mobile/image-from-above.jpg');
+	}
+
+	&__product:nth-of-type(6) {
+		grid-area: 7 / 1 / 8 / 2;
+		background-image: url('../images/mobile/image-pocket-borealis.jpg');
+	}
+
+	&__product:nth-of-type(7) {
+		grid-area: 8 / 1 / 9 / 2;
+		background-image: url('../images/mobile/image-curiosity.jpg');
+	}
+
+	&__product:nth-of-type(8) {
+		grid-area: 9 / 1 / 10 / 2;
+		background-image: url('../images/mobile/image-fisheye.jpg');
+	}
+
+	&__button {
+		font-family: 'Alata', sans-serif;
+		grid-area: 10 / 1 / 11 / 2;
+		justify-self: center;
+		text-transform: uppercase;
+		font-size: 1rem;
+		letter-spacing: 3px;
+		width: 160px;
+		height: 40px;
+		border: 1px solid $black;
+		margin-top: 1rem;
+		background-color: transparent;
+		cursor: pointer;
+	}
 }
 
 @media (min-width: 576px) {
