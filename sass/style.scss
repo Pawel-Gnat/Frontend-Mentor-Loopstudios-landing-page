@@ -156,6 +156,19 @@ header {
 	color: $white;
 }
 
+.link::after {
+	content: '';
+	display: block;
+	padding-bottom: 5px;
+	border-bottom: 2px solid $white;
+	transform: scaleX(0);
+	transition: transform 250ms ease-in-out;
+}
+
+.link:hover::after {
+	transform: scaleX(1);
+}
+
 .heading {
 	text-transform: uppercase;
 	font-size: 2rem;
@@ -207,16 +220,15 @@ header {
 		background-size: cover;
 
 		&--text {
-			position: relative;
-			width: 100%;
+			position: absolute;
 			height: 100%;
+			width: 100%;
 			left: 0;
 			top: 0;
 			text-transform: uppercase;
 			font-size: 1.5rem;
 			padding-top: 2em;
 			padding-left: 1em;
-			padding-right: 7em;
 			color: $white;
 			text-align: left;
 			z-index: 2;
@@ -230,11 +242,7 @@ header {
 		}
 	}
 
-	// stopped here, need to work on my text in products
-	// later i need to make animated hovers on items
-	// and i need to improve my JS with links clicking
-
-	&__product:after {
+	&__product::after {
 		content: '';
 		position: absolute;
 		width: 100%;
@@ -335,9 +343,24 @@ footer {
 
 	&__media {
 		grid-area: 3 / 1 / 4 / 2;
+		display: flex;
 
 		img {
+			height: 24px;
 			margin: 0 0.8em;
+		}
+
+		a::after {
+			content: '';
+			display: block;
+			padding-bottom: 5px;
+			border-bottom: 2px solid $white;
+			transform: scaleX(0);
+			transition: transform 250ms ease-in-out;
+		}
+
+		a:hover::after {
+			transform: scaleX(1);
 		}
 	}
 
@@ -404,7 +427,7 @@ footer {
 	}
 
 	.creations {
-		grid-template-columns: repeat(4, auto);
+		grid-template-columns: repeat(4, 1fr);
 		grid-template-rows: repeat(3, auto);
 		grid-column-gap: 30px;
 		grid-row-gap: 30px;
@@ -420,7 +443,8 @@ footer {
 			max-width: 26em;
 
 			&--text {
-				font-size: 1.6rem;
+				padding-top: 14em;
+				font-size: 1.3rem;
 			}
 		}
 
@@ -510,6 +534,17 @@ footer {
 	}
 }
 
+@media (min-width: 900px) {
+	.creations {
+		&__product {
+			&--text {
+				font-size: 1.6rem;
+				padding-top: 10.5em;
+			}
+		}
+	}
+}
+
 @media (min-width: 992px) {
 	.navbar {
 		&__hero {
@@ -572,6 +607,7 @@ footer {
 
 			&--text {
 				font-size: 1.8rem;
+				padding-top: 12.5em;
 			}
 		}
 
