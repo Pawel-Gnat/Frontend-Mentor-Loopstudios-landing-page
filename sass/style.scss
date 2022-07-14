@@ -393,11 +393,14 @@ footer {
 
 @media (min-width: 768px) {
 	header {
-		background: url('../images/desktop/image-hero.jpg') center no-repeat;
+		background: rgba(0, 0, 0, 0.4) url('../images/desktop/image-hero.jpg') center no-repeat;
 		background-size: cover;
+		background-blend-mode: darken;
 	}
 
 	.navbar {
+		padding: 6em 2.5em 4em;
+
 		&__desktop {
 			display: block;
 
@@ -584,14 +587,15 @@ footer {
 			top: 13em;
 			right: 0;
 			height: 32em;
-			width: 54em;
-			padding: 0 1em 0 4em;
+			width: 56em;
+			padding: 0 1em 0 7em;
 			background-color: $white;
 			text-align: left;
 			z-index: 2;
 
 			&--heading {
-				margin-top: 0.9em;
+				// margin-top: 0.9em;
+				margin-top: 2em;
 			}
 
 			&--info {
